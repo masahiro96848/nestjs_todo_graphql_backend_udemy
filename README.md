@@ -39,3 +39,9 @@ npx prisma migrate dev --name init
 Userテーブルが出来ていることを確認。
 
 SequelAceなどのGUIのツールを使って確認。
+
+
+### サーバー起動(backendコンテナに入って)
+```
+npm run start:dev
+```
