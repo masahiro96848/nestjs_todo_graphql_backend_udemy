@@ -2,13 +2,18 @@
 
 ### ディレクトリを変更
 ```
-cd api-server/
+cd nest_todo_graphql/api-server/
 ```
 
 
 ### .envを作成
 ```
 cp .env.sample .env
+```
+
+### ディレクトリを元に戻す
+```
+cd ../
 ```
 
 ### dockerで立ち上げ
@@ -21,9 +26,9 @@ docker compose up -d
 docker exec -it backend sh
 ```
 
-### backendコンテナに入る
+### パッケージをインストール
 ```
-docker exec -it backend sh
+npm install
 ```
 
 ### Prismaでマイグレーション
