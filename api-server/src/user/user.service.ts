@@ -8,6 +8,12 @@ import * as bcrypt from 'bcrypt';
 export class UserService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  async getUser(email: string): Promise<User> {
+    return await this.prismaService.user.findUnique({
+      where: { email },
+    });
+  }
+
   async createUser(createUserInput: CreateUserInput): Promise<User> {
     const { username, email, password } = createUserInput;
     const hashedPassword = await bcrypt.hash(password, 10);
