@@ -1,16 +1,59 @@
 // prisma/seed.ts
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const users = [
-    { username: 'サンプルテスト001', email: 'sample01@example.com' },
-    { username: 'サンプルテスト002', email: 'sample02@example.com' },
-    { username: 'サンプルテスト003', email: 'sample03@example.com' },
-    { username: 'サンプルテスト004', email: 'sample04@example.com' },
-    { username: 'サンプルテスト005', email: 'sample05@example.com' },
+  const plainPassword = 'password';
+  const saltRounds = 10;
+
+  // パスワードをハッシュ化
+  const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+
+  const currentDate = new Date();
+  const users: User[] = [
+    {
+      id: 1,
+      username: 'サンプルテスト001',
+      email: 'sample01@example.com',
+      password: hashedPassword,
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      id: 2,
+      username: 'サンプルテスト002',
+      email: 'sample02@example.com',
+      password: hashedPassword,
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      id: 3,
+      username: 'サンプルテスト003',
+      email: 'sample03@example.com',
+      password: hashedPassword,
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      id: 4,
+      username: 'サンプルテスト004',
+      email: 'sample04@example.com',
+      password: hashedPassword,
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      id: 5,
+      username: 'サンプルテスト005',
+      email: 'sample05@example.com',
+      password: hashedPassword,
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
   ];
 
   // 既存のデータをクリアしたい場合は以下をアンコメント
