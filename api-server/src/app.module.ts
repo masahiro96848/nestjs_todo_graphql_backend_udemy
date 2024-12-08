@@ -12,6 +12,7 @@ import { UserModule } from './user/user.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: true,
+      sortSchema: true,
     }),
     TaskModule,
     PrismaModule,
