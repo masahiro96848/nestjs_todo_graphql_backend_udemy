@@ -1,3 +1,4 @@
+import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -18,6 +19,10 @@ import { AuthModule } from './auth/auth.module';
     TaskModule,
     PrismaModule,
     UserModule,
+    ConfigModule.forRoot({
+      isGlobal: true, // ConfigModuleをグローバルにすることで、他のモジュールで再インポート不要
+      envFilePath: '.env', // デフォルトで'.env'を読み込むので省略可能
+    }),
     AuthModule,
   ],
 })

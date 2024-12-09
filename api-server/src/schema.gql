@@ -23,12 +23,23 @@ type Mutation {
   createTask(createTaskInput: CreateTaskInput!): Task!
   createUser(createUserInput: CreateUserInput!): User!
   deleteTask(id: Int!): Task!
+  signIn(signInInput: SignInInput!): SignInResponse!
   updateTask(updateTaskInput: UpdateTaskInput!): Task!
 }
 
 type Query {
   getTasks(userId: Int!): [Task]!
   getUser(email: String!): User
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+type SignInResponse {
+  accessToken: String!
+  user: User!
 }
 
 type Task {
